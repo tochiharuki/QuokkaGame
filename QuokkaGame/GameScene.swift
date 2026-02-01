@@ -10,8 +10,12 @@ class GameScene: SKScene {
     var pillars: [SKSpriteNode] = []
 
     var isJumping = false
-    let scrollSpeed: CGFloat = 2.0
+    var scrollSpeed: CGFloat = 2.0
+    let scrollAcceleration: CGFloat = 0.002
     let pillarSpacing: CGFloat = 180
+    var jumpPowerMultiplier: CGFloat = 1.0
+    let jumpPowerIncreaseRate: CGFloat = 0.0008
+    let maxJumpPowerMultiplier: CGFloat = 1.4
 
     // ジャンプチャージ関連
     private var isChargingJump = false
@@ -100,6 +104,13 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
+        scrollSpeed += scrollAcceleration   // ← 毎フレーム少しずつ加速
+        jumpPowerMultiplier = min(
+        jumpPowerMultiplier + jumpPowerIncreaseRate,
+            maxJumpPowerMultiplier
+        )
+
+
         worldNode.position.x -= scrollSpeed
 
         for pillar in pillars {
