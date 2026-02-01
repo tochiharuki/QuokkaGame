@@ -14,8 +14,8 @@ class GameScene: SKScene {
     let scrollAcceleration: CGFloat = 0.002
     let pillarSpacing: CGFloat = 180
     var jumpPowerMultiplier: CGFloat = 1.0
-    let jumpPowerIncreaseRate: CGFloat = 0.001
-    let maxJumpPowerMultiplier: CGFloat = 3.0
+    let jumpPowerIncreaseRate: CGFloat = 0.01
+    let maxJumpPowerMultiplier: CGFloat = 6.0
 
     // ジャンプチャージ関連
     private var isChargingJump = false
